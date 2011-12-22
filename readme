@@ -1,0 +1,11 @@
+PHP securet
+
+# php internal
+http://pecl.php.net/package/tidy
+http://pear.php.net/package/Validate
+http://cn.php.net/manual/en/tidy.examples.basic.php
+
+# XSS
+http://ha.ckers.org/xss.html#XSScalc
+# sql inject
+http://pear.php.net/package/MDB2
