@@ -7,7 +7,7 @@ class Html implements Str
 
     function __construct($html)
     {
-        $this->setType(0x00);
+        $this->setType(self::HTML);
         $this->setStr($html);
     }
 
@@ -32,10 +32,11 @@ class Html implements Str
 
 class Sql implements Str
 {
+
     private $str,$type;
 
     function __construct($sql){
-        $this->setType(0x01);
+        $this->setType(self::SQL);
         $this->setStr($sql);
     }
 
@@ -62,6 +63,8 @@ class Sql implements Str
 
 interface Str
 {
+    const HTML = 0x00;
+    const SQL  = 0x01;
     function getType();
     function getStr();
 }
@@ -78,7 +81,7 @@ abstract class Safer_abstract implements Safer_interface
 
 class Safer extends Safer_abstract
 {
-    public $str,$type;
+    protected $str,$type;
 
     function __construct(Str $s)
     {
@@ -123,5 +126,5 @@ $query_str = "test' AND 1=1;";
 
 $sql = new Sql($query_str);
 $html = new Html($a);
-$safer = new Safer($sql);
+$safer = new Safer($html);
 var_dump($safer->safe_str());
